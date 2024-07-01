@@ -30,26 +30,30 @@ public class SeleniumWrappers extends BaseTest{
 	 * @param locator
 	 */
 	public void click(WebElement element) { //clasa By se importa in cazul PageFactory
-	
+		Log.info("called method <click> on element " + element);
 		try {
+			Log.info("called method Wait for visibility of on element " + element);
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 			wait.until(ExpectedConditions.visibilityOf(element));
 			//WebElement element  =  driver.findElement(locator);
-			element.click();	
+			element.click();
+			Log.info("<click()> performed on element" + element);
 			
 		}catch(NoSuchElementException e) {
-			
+			Log.error("catch in <click()> with error " + e.getMessage());
 		}	
 	}
 	
 	public void sendKeys(WebElement element, String text) {
-		
+		Log.info("called method <sendKeys()> on element " + element);
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 			wait.until(ExpectedConditions.visibilityOf(element));
 			//WebElement element  =  driver.findElement(locator);
+			Log.info("called method <clear()> on element" + element);
 			element.clear();
 			element.sendKeys(text);	
+			Log.info("method <sendKeys()> executed on element" + element);
 			
 		}catch(NoSuchElementException e) {
 			
@@ -57,10 +61,10 @@ public class SeleniumWrappers extends BaseTest{
 		
 	}
 	
-	public String getElementText(By locator) {
+	public String getElementText(WebElement element) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));		
-		return driver.findElement(locator).getText();
+		wait.until(ExpectedConditions.visibilityOf(element));		
+		return element.getText();
 		
 	}
 	
