@@ -17,41 +17,38 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 
-
 import com.google.common.io.Files;
 
 public class BaseTest {
 
 	public static WebDriver driver;
 	public JavascriptExecutor jse;
-	
-	/*
+
+/*	
 	@BeforeClass
 	public void deleteAllCookies() {
 		driver.manage().deleteAllCookies();
 	}
 	*/
-
 	
 	@Parameters({"appUrl"})
-	//@BeforeClass(alwaysRun = true)
-	@BeforeMethod(alwaysRun = true) 
+	@BeforeClass(alwaysRun = true)
 	public void setup(String url) {
 		
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		//driver.get("https://keybooks.ro");
+	//	driver.get("https://keybooks.ro");
 		driver.get(url);
 		jse = (JavascriptExecutor) driver;
 	}
-
-	//@AfterClass(alwaysRun = true)
-	@AfterMethod(alwaysRun = true)
+	
+	@AfterClass(alwaysRun = true)
 	public void tearDown() throws InterruptedException  {
 		Thread.sleep(5000);//bad practice
 		driver.quit();
 	}
+	
 	
 	@AfterMethod
 	public void recordFailure(ITestResult result) {
@@ -69,9 +66,7 @@ public class BaseTest {
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
-			
-		}	
 		
 	}
-	
+}
 }

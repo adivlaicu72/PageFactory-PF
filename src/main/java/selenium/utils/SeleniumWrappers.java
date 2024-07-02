@@ -29,6 +29,7 @@ public class SeleniumWrappers extends BaseTest{
 	 * 2.retry mechanism for NoSuchElement 
 	 * @param locator
 	 */
+	
 	public void click(WebElement element) { //clasa By se importa in cazul PageFactory
 		Log.info("called method <click> on element " + element);
 		try {
