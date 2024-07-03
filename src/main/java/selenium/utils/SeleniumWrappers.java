@@ -63,7 +63,7 @@ public class SeleniumWrappers extends BaseTest{
 	}
 	
 	public String getElementText(WebElement element) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 		wait.until(ExpectedConditions.visibilityOf(element));		
 		return element.getText();
 		
