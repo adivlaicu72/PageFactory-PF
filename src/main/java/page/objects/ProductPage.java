@@ -1,5 +1,6 @@
 package page.objects;
 
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -38,8 +39,13 @@ public class ProductPage extends SeleniumWrappers{
 	@FindBy(xpath="//p[@class=\"woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received\"]")
 	public WebElement orderSuccessMessage;
 	
-	@FindBy(xpath="//ul/li[@class=\"woocommerce-order-overview__order order\"]")
+	@FindBy(xpath="//ul/li[@class='woocommerce-order-overview__order order']/strong")
 	public WebElement orderNumber;
+	
+	@FindBy(xpath="//span[@class=\"woocommerce-Price-amount amount\"]")
+	public WebElement price;
+
+	
 
 
 }
