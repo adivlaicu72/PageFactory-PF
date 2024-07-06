@@ -26,10 +26,14 @@ public class MyAccountPage extends SeleniumWrappers {
 	@FindBy(className="woocommerce-MyAccount-content")
 	public WebElement myAccountContent;
 	
+	@FindBy(css="div.dgwt-wcas-sf-wrapp")
+	public WebElement searchForm;
 	
-public void loginInApp(String username, String password) {
-		
+	@FindBy(css="input.dgwt-wcas-search-input")
+	public WebElement searchField;
 
+	
+	public void loginInApp(String username, String password) {
 		//driver.findElement(submitBtn).click();
 		sendKeys(usernameField, username);
 		sendKeys(passwordField, password);

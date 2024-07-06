@@ -14,7 +14,7 @@ public class LoginTest extends BaseTest{
 	String USER = PropertiesFileProcessor.readPropertiesFile("user", "credential.properties");
 	String PASS = PropertiesFileProcessor.readPropertiesFile("pass", "credential.properties");
 
-	@Test
+	@Test()
 	public void validLogin() {
 		
 		MenuPage menu =  new MenuPage(driver);
@@ -24,6 +24,9 @@ public class LoginTest extends BaseTest{
 		myAccount.loginInApp(USER, PASS);
 		
 		assertTrue(myAccount.myAccountContent.isDisplayed());
+		
 	}
+	
+	
 		
 }
