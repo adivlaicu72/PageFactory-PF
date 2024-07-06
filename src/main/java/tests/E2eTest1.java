@@ -3,8 +3,14 @@ package tests;
 
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertTrue;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
@@ -38,15 +44,23 @@ public class E2eTest1 extends BaseTest{
 		ProductPage product = new ProductPage(driver);
 		product.click(product.addToCartButton);
 		//Verify added to cart message
-		//assertEquals(myAccount.getElementText(myAccount.addedToCartMessage), "View cart \"Rold Gold Tiny Twists Pretzels\" has been added to your cart.");
+		assertTrue(myAccount.getElementText(product.addedToCartMessage).contains("“Rold Gold Tiny Twists Pretzels” has been added to your cart."));
 		
 		//go cart page and update qty
 		product.click(product.viewCartButton);
 		product.click(product.updateQtyButton);
 		
-		
 		//Verify price is updated
-		//assert
+		List<WebElement> priceList = product.getWebElementList(product.price);
+        
+		//citesc textul si scot $
+		String firstItemPrice =  priceList.get(1).getText().substring(1);
+		String lastItemPrice =  priceList.get(4).getText().substring(1);
+		//transform textul in double
+		Double firstPrice = Double.parseDouble(firstItemPrice);
+		Double lastPrice = Double.parseDouble(lastItemPrice);
+		//assertez intr-un ternary
+		assertTrue((firstPrice < lastPrice) ? true : false);
 		
 		//Proceed to checkout
 		product.click(product.proceedToCheckoutButton);
@@ -56,7 +70,7 @@ public class E2eTest1 extends BaseTest{
 		
 		//Verify order is placed and you are given an order nr
 		assertEquals(product.getElementText(product.orderSuccessMessage), "Thank you. Your order has been received.");
-		//assertEquals(product.getElementText(product.orderNumber), "Order number:");
+		assertNotNull(product.getElementText(product.orderNumber));
 		
 		
 		
