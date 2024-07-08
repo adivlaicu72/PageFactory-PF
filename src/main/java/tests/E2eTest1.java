@@ -6,11 +6,7 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
 
-import java.util.List;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
@@ -49,21 +45,18 @@ public class E2eTest1 extends BaseTest{
 		//go cart page and update qty
 		product.click(product.viewCartButton);
 		product.click(product.updateQtyButton);
-		 Thread.sleep(3000);
-         //Verify price is updated
-         //assert
-         //List<WebElement> priceList = product.getWebElementList(product.price);
-                
-         //citesc textul si scot $
-         String firstItemPrice =  product.price.get(3).getText().substring(1);
-         String lastItemPrice =  product.price.get(0).getText().substring(1);
-         //transform textul in double
-         Double firstPrice = Double.parseDouble(firstItemPrice);
-         Double lastPrice = Double.parseDouble(lastItemPrice);
-         System.out.println(firstItemPrice);
-         System.out.println(lastItemPrice);
-         //assertez intr-un ternary
-         assertTrue((firstPrice < lastPrice) ? true : false);
+		Thread.sleep(3000);
+        //Verify price is updated         
+        //citesc textul si scot $
+        String firstItemPrice =  product.price.get(3).getText().substring(1);
+        String lastItemPrice =  product.price.get(0).getText().substring(1);
+        //transform textul in double
+        Double firstPrice = Double.parseDouble(firstItemPrice);
+        Double lastPrice = Double.parseDouble(lastItemPrice);
+        System.out.println(firstItemPrice);
+        System.out.println(lastItemPrice);
+        //assertez intr-un ternary
+        assertTrue((firstPrice < lastPrice) ? true : false);
 		
 		//Proceed to checkout
 		product.click(product.proceedToCheckoutButton);
