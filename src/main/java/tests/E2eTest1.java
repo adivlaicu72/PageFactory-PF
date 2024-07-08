@@ -27,7 +27,7 @@ public class E2eTest1 extends BaseTest{
 
 
 	@Test
-	public void e2eTest() {
+	public void e2eTest() throws InterruptedException {
 		MenuPage menu =  new MenuPage(driver);
 		MyAccountPage myAccount =  new MyAccountPage(driver);
 		//login in app		
@@ -49,18 +49,21 @@ public class E2eTest1 extends BaseTest{
 		//go cart page and update qty
 		product.click(product.viewCartButton);
 		product.click(product.updateQtyButton);
-		
-		//Verify price is updated
-		List<WebElement> priceList = product.getWebElementList(product.price);
-        
-		//citesc textul si scot $
-		String firstItemPrice =  priceList.get(1).getText().substring(1);
-		String lastItemPrice =  priceList.get(4).getText().substring(1);
-		//transform textul in double
-		Double firstPrice = Double.parseDouble(firstItemPrice);
-		Double lastPrice = Double.parseDouble(lastItemPrice);
-		//assertez intr-un ternary
-		assertTrue((firstPrice < lastPrice) ? true : false);
+		 Thread.sleep(3000);
+         //Verify price is updated
+         //assert
+         //List<WebElement> priceList = product.getWebElementList(product.price);
+                
+         //citesc textul si scot $
+         String firstItemPrice =  product.price.get(3).getText().substring(1);
+         String lastItemPrice =  product.price.get(0).getText().substring(1);
+         //transform textul in double
+         Double firstPrice = Double.parseDouble(firstItemPrice);
+         Double lastPrice = Double.parseDouble(lastItemPrice);
+         System.out.println(firstItemPrice);
+         System.out.println(lastItemPrice);
+         //assertez intr-un ternary
+         assertTrue((firstPrice < lastPrice) ? true : false);
 		
 		//Proceed to checkout
 		product.click(product.proceedToCheckoutButton);

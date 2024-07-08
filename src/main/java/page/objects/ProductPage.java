@@ -1,6 +1,8 @@
 package page.objects;
 
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -43,7 +45,7 @@ public class ProductPage extends SeleniumWrappers{
 	public WebElement orderNumber;
 	
 	@FindBy(xpath="//span[@class=\"woocommerce-Price-amount amount\"]")
-	public WebElement price;
+	public List<WebElement> price;
 
 	
 
