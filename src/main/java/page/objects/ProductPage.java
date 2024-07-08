@@ -47,7 +47,14 @@ public class ProductPage extends SeleniumWrappers{
 	@FindBy(xpath="//span[@class=\"woocommerce-Price-amount amount\"]")
 	public List<WebElement> price;
 
+	@FindBy(xpath="//span[@class=\"text\"][text()=\"ALL CATEGORIES\"]")
+	public WebElement allCategories;
 	
+	@FindBy(xpath="//a[text()=\"Fruits & Vegetables\"]")
+	public WebElement fruitsVegetables;
+	
+	@FindBy(xpath="//a[text()=\"Fresh Produce Melons Each\"]")
+	public WebElement freshMellons;
 
 
 }
