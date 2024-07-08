@@ -69,8 +69,8 @@ public class SeleniumWrappers extends BaseTest{
 		
 	}
 	
-	public void hoverElement(By locator) {
-		WebElement element = driver.findElement(locator);
+	public void hoverElement(WebElement element) {
+		//WebElement elem = driver.findElement(element);
 		Actions action = new Actions(driver);
 		action.moveToElement(element).perform();
 		
@@ -101,8 +101,8 @@ public class SeleniumWrappers extends BaseTest{
 	}
 	
 	
-	public WebElement getWebElement(By locator) {
-		return driver.findElement(locator);
+	public WebElement getWebElement(WebElement element) {
+		return element;
 	}
 	
 	public boolean checkElementIsDisplayed(By locator) {
@@ -111,9 +111,9 @@ public class SeleniumWrappers extends BaseTest{
         return driver.findElement(locator).isDisplayed();
    }
 	
-	public void selectDropDownValue(By locator, Object selection) {
+	public void selectDropDownValue(WebElement element, Object selection) {
         
-        Select select = new Select(getWebElement(locator));
+        Select select = new Select(getWebElement(element));
         
         if(selection.getClass() == Integer.class) {
             select.selectByIndex((int) selection);
@@ -122,17 +122,16 @@ public class SeleniumWrappers extends BaseTest{
         }
    }
 	
-	 public String getFirstSelectedOption(By locator) {
+	 public String getFirstSelectedOption(WebElement element) {
          
-         Select select = new Select(getWebElement(locator));
+         Select select = new Select(getWebElement(element));
          return select.getFirstSelectedOption().getText();
     }
-	 
-	 public List<WebElement> getWebElementList(By locator) {
-         return driver.findElements(locator);
-    }
 	
-	
-	
-	
+	 /*
+	 public List<WebElement> getWebElementList(WebElement element) {
+         return driver.findElements(element);
+         
+    } */
 }
+	

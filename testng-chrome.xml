@@ -10,7 +10,7 @@
     
     <test name="test" >
         <classes>
-            <class name="tests.E2eTest1" ></class>  
+            <class name="tests.MultipleCategoriesTest" ></class>  
         </classes>
     </test>   
 </suite>
